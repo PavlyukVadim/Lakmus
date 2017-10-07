@@ -21,5 +21,3 @@ exports.plugins = {
     }
   }
 };
-
-exports.hot = true;
