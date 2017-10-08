@@ -1,0 +1,11 @@
+@import '../../styles/variables';
+
+footer {
+	height: $footer-height;
+	background-color: $black-with-alpha;
+  display: flex !important;
+  align-items: center;
+  color: white;
+  text-align: center;
+  justify-content: center;
+}
