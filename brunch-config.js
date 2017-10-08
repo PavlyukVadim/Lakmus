@@ -3,7 +3,10 @@ const gitHubPageName = 'lakmus';
 
 exports.files = {
   javascripts: {
-    joinTo: 'app.js'
+    joinTo: {
+      'vendor.js': /^(?!app)/,
+      'app.js': /^app/
+    }
   },
   stylesheets: {
     defaultExtension: 'scss',
@@ -13,7 +16,8 @@ exports.files = {
 
 exports.plugins = {
   babel: {
-    presets: ['latest', 'react']
+    presets: ['latest', 'react'],
+    ignore: [/node_modules/]
   },
   handlebars: {
     locals: {
@@ -22,3 +26,10 @@ exports.plugins = {
     }
   }
 };
+
+exports.npm = {
+  enabled: true,
+  styles: {
+    'antd': ['dist/antd.css']
+  }
+}
