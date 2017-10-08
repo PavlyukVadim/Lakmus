@@ -25,6 +25,7 @@
     "clean-css-brunch": "^2",
     "handlebars-brunch": "^2.10.0",
     "hmr-brunch": "^0.1",
+    "sass-brunch": "^2.10.4",
     "uglify-js-brunch": "^2"
   }
 }

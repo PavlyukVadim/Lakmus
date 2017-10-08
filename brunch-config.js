@@ -6,6 +6,7 @@ exports.files = {
     joinTo: 'app.js'
   },
   stylesheets: {
+    defaultExtension: 'scss',
     joinTo: 'app.css'
   }
 };
