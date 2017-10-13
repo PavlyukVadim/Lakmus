@@ -4,6 +4,7 @@ import { Table, Input, Button, Icon } from 'antd';
 const sources = [{
   key: '1',
   name: 'Mike',
+  gender: 'male',
   phone: '+0 000 00 00 000',
   email: 'some.email@some.some',
   birthday: '01.01.1970',
@@ -11,6 +12,7 @@ const sources = [{
 },{
   key: '2',
   name: 'Mike',
+  gender: 'female',
   phone: '+0 000 00 00 000',
   email: 'some.email@some.some',
   birthday: '01.01.1970',
@@ -18,6 +20,7 @@ const sources = [{
 },{
   key: '3',
   name: 'Mike',
+  gender: 'male',
   phone: '+0 000 00 00 000',
   email: 'some.email@some.some',
   birthday: '01.01.1970',
@@ -34,6 +37,7 @@ class MyTable extends Component {
       searchText: '',
       filtered: false,
     };
+    
     this.onInputChange = this.onInputChange.bind(this);
     this.onSearch = this.onSearch.bind(this);
   }
@@ -61,6 +65,7 @@ class MyTable extends Component {
   }
 
   render() {
+    console.log('render');
     const columns = [{
       title: 'Name',
       dataIndex: 'name',
@@ -84,27 +89,39 @@ class MyTable extends Component {
           filterDropdownVisible: visible,
         }, () => this.searchInput.focus());
       },
+    },  {
+      title: 'Phone',
+      dataIndex: 'phone',
+      key: 'phone',
     }, {
-      title: 'Age',
-      dataIndex: 'age',
-      key: 'age',
+      title: 'Gender',
+      dataIndex: 'gender',
+      key: 'gender',
+      filters: [{
+        text: 'Male',
+        value: 'male',
+      }, {
+        text: 'Female',
+        value: 'female',
+      }],
+      onFilter: (value, record) => record.gender.indexOf(value) === 0,
+    }, {
+      title: 'Email',
+      dataIndex: 'email',
+      key: 'email',
+    }, {
+      title: 'Birthday',
+      dataIndex: 'birthday',
+      key: 'birthday',
     }, {
       title: 'Address',
       dataIndex: 'address',
-      key: 'address',
-      filters: [{
-        text: 'London',
-        value: 'London',
-      }, {
-        text: 'New York',
-        value: 'New York',
-      }],
-      onFilter: (value, record) => record.address.indexOf(value) === 0,
+      key: 'address'
     }];
+
     return (
       <main>
         <div className="my-table">
-          <Input />
           <Table columns={columns} dataSource={this.state.data} />
         </div>
       </main>
